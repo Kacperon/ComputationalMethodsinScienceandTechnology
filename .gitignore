@@ -1,0 +1,11 @@
+# Ignorowanie plików binarnych
+*.exe
+*.dll
+
+# Ignorowanie plików tymczasowych
+*.tmp
+*.log
+
+# Ignorowanie katalogu build
+build/
+target/
