@@ -13,7 +13,7 @@ Labs are implemented in **Rust** and **Julia**.
 
 ## Repository Structure
 ```
-📂 computational-methods
+📂 computational methods
 │── 📂 lab1
 │   ├── rust
 │   ├── julia
