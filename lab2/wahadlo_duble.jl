@@ -5,8 +5,8 @@ using Plots
 g = 9.81         # przyspieszenie ziemskie [m/s^2]
 m1 = 1.0         # masa pierwszego wahadła [kg]
 m2 = 1.0         # masa drugiego wahadła [kg]
-l1 = 1.0         # długość pierwszego ramienia [m]
-l2 = 1.0         # długość drugiego ramienia [m]
+l1 = 1.2         # długość pierwszego ramienia [m]
+l2 = 0.8         # długość drugiego ramienia [m]
 
 # Równania ruchu podwójnego wachadła
 function double_pendulum!(du, u, p, t)
