@@ -9,5 +9,6 @@ plot(data.value, data.distance, xlabel="Wartość liczby", ylabel="Odległość"
 
 # Zapisanie wykresu do pliku PNG
 savefig("distance_plot.png")
+println("Wykres zapisany jako distance_plot.png")
 
 
