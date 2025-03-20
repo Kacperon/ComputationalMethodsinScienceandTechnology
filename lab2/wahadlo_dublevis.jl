@@ -1,14 +1,14 @@
 using DifferentialEquations
 using Plots
 
-# Parametry podwójnego wachadła
+# Parametry podwójnego wahadła
 g = 9.81         # przyspieszenie ziemskie [m/s^2]
 m1 = 1.0         # masa pierwszego wahadła [kg]
 m2 = 1.0         # masa drugiego wahadła [kg]
 l1 = 1.2         # długość pierwszego ramienia [m]
 l2 = 0.8         # długość drugiego ramienia [m]
 
-# Równania ruchu podwójnego wachadła
+# Równania ruchu podwójnego wahadła
 function double_pendulum!(du, u, p, t)
     θ1, ω1, θ2, ω2 = u
     Δ = θ1 - θ2
@@ -46,7 +46,7 @@ anim = @animate for i in 1:length(sol.t)
     plot!(p, [x1[i], x2[i]], [y1[i], y2[i]], lw = 2, label = "")
     scatter!(p, [0, x1[i], x2[i]], [0, y1[i], y2[i]], markersize = 4,
              color = :red, label = "")
-    title!(p, "Podwójne wachadło, t = $(round(sol.t[i], digits=2)) s")
+    title!(p, "Podwójne wahadło, t = $(round(sol.t[i], digits=2)) s")
     p
 end
 
