@@ -51,5 +51,6 @@ anim = @animate for i in 1:length(sol.t)
 end
 
 # Zapis animacji do pliku GIF (fps = 30)
-gif(anim, "double_pendulum_animation.gif", fps = 30)
+println("Zapisywanie animacji jako double_pendulum_animation.gif")
+gif(anim, "double_pendulum_animation_$(l1)_$(l2).gif", fps = 30)
 println("Animacja zapisana jako double_pendulum_animation.gif")
