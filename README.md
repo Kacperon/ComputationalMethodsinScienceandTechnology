@@ -39,7 +39,7 @@ Additionally, install `cargo` for Rust and `Pkg` for Julia package management.
 1. Install Rust via [rustup](https://rustup.rs/).
 2. Navigate to the lab directory:
    ```sh
-   cd lab1/rust
+   cd lab1
    ```
 3. Build and run:
    ```sh
@@ -50,7 +50,7 @@ Additionally, install `cargo` for Rust and `Pkg` for Julia package management.
 1. Download and install [Julia](https://julialang.org/downloads/).
 2. Navigate to the lab directory:
    ```sh
-   cd lab1/julia
+   cd lab1
    ```
 3. Run the script:
    ```sh
