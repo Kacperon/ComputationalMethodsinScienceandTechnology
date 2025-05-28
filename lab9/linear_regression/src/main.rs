@@ -2,15 +2,37 @@ use ndarray::{Array1, Array2};
 use ndarray_linalg::{QR, Solve};
 use rand_distr::{Normal, Distribution};
 use plotters::prelude::*;
+use std::env;
 
 fn main() -> Result<(), Box<dyn std::error::Error>> {
+    // Pobierz liczbę punktów z argumentów wiersza poleceń
+    let args: Vec<String> = env::args().collect();
+    let num_points = if args.len() > 1 {
+        match args[1].parse::<usize>() {
+            Ok(n) => n,
+            Err(_) => {
+                println!("Nieprawidłowa liczba punktów. Używam domyślnej wartości 5000.");
+                500
+            }
+        }
+    } else {
+        // Domyślna liczba punktów
+        500
+    };
+
+    println!("Generuję {} punktów do regresji liniowej", num_points);
+
     // Przykładowe dane do regresji liniowej
     let mut rng = rand::rng();
-    let x_data: Vec<f64> = (1..=50).map(|i| i as f64 * 0.2).collect();
+    // Generuj punkty x w przedziale [0, 10] w równych odstępach, z szumem normalnym
+    let normal = Normal::new(0.0, 2.0).unwrap();
+    let x_data: Vec<f64> = (0..num_points)
+        .map(|i| 10.0 * i as f64 / (num_points as f64 - 1.0) + normal.sample(&mut rng))
+        .collect();
     let normal = Normal::new(0.0, 5.0).unwrap();
     let y_data: Vec<f64> = x_data
         .iter()
-        .map(|&x| 2.0 + 1.8 * x + normal.sample(&mut rng))
+        .map(|&x| 2.0 + 2.0 * x + normal.sample(&mut rng))
         .collect();
 
     // Tworzymy macierz A (kolumna jedynek + x) i wektor b (y)
@@ -29,7 +51,7 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
     println!("Współczynniki regresji (beta_0, beta_1): {:?}", x);
 
     // Wizualizacja danych i dopasowanej prostej
-    let root = BitMapBackend::new("plot.png", (800, 600)).into_drawing_area();
+    let root = BitMapBackend::new("plot.png", (1600, 1200)).into_drawing_area();
     root.fill(&WHITE)?;
 
     // Znajdź min i max wartości dla skalowania wykresu
@@ -59,7 +81,7 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
         x_data
             .iter()
             .zip(y_data.iter().cloned()) // Use cloned() to avoid moving y_data
-            .map(|(&x, y)| Circle::new((x, y), 5, RED.filled())),
+            .map(|(&x, y)| Circle::new((x, y), 1, RED.filled())),
     )?;
 
     // Linia regresji: y = beta_0 + beta_1 * x
