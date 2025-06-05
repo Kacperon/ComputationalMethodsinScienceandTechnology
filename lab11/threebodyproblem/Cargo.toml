@@ -10,4 +10,6 @@ eframe = "0.27"
 kiss3d = "0.31"
 nalgebra = "0.32"
 chrono = "0.4"
+png = "0.17.16"
+gif = "0.13.1"
 

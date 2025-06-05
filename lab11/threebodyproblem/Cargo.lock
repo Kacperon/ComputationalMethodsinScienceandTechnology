@@ -1763,6 +1763,16 @@ dependencies = [
 ]
 
 [[package]]
+name = "gif"
+version = "0.13.1"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "3fb2d69b19215e18bb912fa30f7ce15846e301408695e44e0ef719f1da9e19f2"
+dependencies = [
+ "color_quant",
+ "weezl",
+]
+
+[[package]]
 name = "gl_generator"
 version = "0.14.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -4204,9 +4214,11 @@ dependencies = [
  "chrono",
  "eframe",
  "egui",
+ "gif 0.13.1",
  "kiss3d",
  "nalgebra 0.32.6",
  "plotters",
+ "png 0.17.16",
 ]
 
 [[package]]
