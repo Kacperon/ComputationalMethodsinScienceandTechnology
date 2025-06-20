@@ -1,10 +1,10 @@
 using FFTW, Plots, Random
 
 # 1. Tworzymy sygnał z szumem
-N = 512
+N = 1024
 x = range(0, 2π, length=N)
-signal = cos.(5 .* x)                     # sygnał bazowy
-noise = 1.0 .* rand(N) .- 0.5            # szum w zakresie [-0.5, 0.5]
+signal = cos.(5 .* x) + 0.7*cos.(20 .*x) + 0.4*cos.(50 .*x)               # sygnał bazowy
+noise = 2.5 .* randn(N) .- 0.5            # szum w zakresie [-0.5, 0.5]
 noisy_signal = signal .+ noise            # sygnał zaszumiony
 
 # 2. FFT
@@ -12,7 +12,7 @@ spectrum = fft(noisy_signal)
 
 # 3. Odszumianie – filtracja widma
 filtered_spectrum = copy(spectrum)
-filtered_spectrum[abs.(spectrum) .< 50] .= 0
+filtered_spectrum[abs.(spectrum) .< 200] .= 0
 
 # 4. Odwrotna FFT
 denoised_signal = real(ifft(filtered_spectrum))
